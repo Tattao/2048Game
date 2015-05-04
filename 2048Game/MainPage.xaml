@@ -1,0 +1,58 @@
+﻿<Page
+    x:Class="_2048Game.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:_2048Game"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <Style TargetType="Button">
+            <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
+            <Setter Property="VerticalAlignment" Value="Stretch"></Setter>
+            <Setter Property="Margin" Value="0,-10,5,0"></Setter>
+            <Setter Property="Background" Value="DarkGray"></Setter>  
+        </Style>
+    </Page.Resources>
+    <Grid>
+        <StackPanel>
+            <Button Margin="0,0,0,20" VerticalAlignment="Top" Content="New Game" Width="160" Background="Black"></Button>
+            <Grid Background="BlanchedAlmond" Width="380" Height="400" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Name="btn1" Grid.Row="0" Grid.Column="0" />
+                <Button Name="btn2" Grid.Row="0" Grid.Column="1" />
+                <Button Name="btn3" Grid.Row="0" Grid.Column="2" />
+                <Button Name="btn4" Grid.Row="0" Grid.Column="3" />
+                <Button Name="btn5" Grid.Row="1" Grid.Column="0" />
+                <Button Name="btn6" Grid.Row="1" Grid.Column="1" />
+                <Button Name="btn7" Grid.Row="1" Grid.Column="2" />
+                <Button Name="btn8" Grid.Row="1" Grid.Column="3" />
+                <Button Name="btn9" Grid.Row="2" Grid.Column="0" />
+                <Button Name="btn10" Grid.Row="2" Grid.Column="1" />
+                <Button Name="btn11" Grid.Row="2" Grid.Column="2" />
+                <Button Name="btn12" Grid.Row="2" Grid.Column="3" />
+                <Button Name="btn13" Grid.Row="3" Grid.Column="0" />
+                <Button Name="btn14" Grid.Row="3" Grid.Column="1" />
+                <Button Name="btn15" Grid.Row="3" Grid.Column="2" />
+                <Button Name="btn16" Grid.Row="3" Grid.Column="3" />
+                
+            </Grid>
+            <StackPanel Margin="0,20,0,0" VerticalAlignment="Bottom" HorizontalAlignment="Center" Orientation="Horizontal">
+                <TextBlock Text="Score:" FontSize="30"></TextBlock>
+                <TextBlock Name="scoretext" FontSize="40"></TextBlock>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>
