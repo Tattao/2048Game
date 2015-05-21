@@ -8,50 +8,70 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Page.Resources>
+        <local:ScoreConverter x:Key="ScoreConverter1"/>
+        <local:ScoreConverter x:Key="ScoreConverter"/>
         <Style TargetType="Button">
-            <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
-            <Setter Property="VerticalAlignment" Value="Stretch"></Setter>
-            <Setter Property="Margin" Value="0,-10,5,0"></Setter>
-            <Setter Property="Background" Value="DarkGray"></Setter>  
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Background" Value="DarkGray"/>
+            <Setter Property="Width" Value="70"/>
+            <Setter Property="Height" Value="70"/>
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontSize" Value="40"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid x:Name="Grid" Background="Transparent">
+                            <Border x:Name="Border" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}"   Background="{TemplateBinding Background}" >
+                                <ContentPresenter x:Name="ContentPresenter"  ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}"  HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
+        <local:ScoreConverter x:Key="scoreConverter" />
     </Page.Resources>
     <Grid>
-        <StackPanel>
-            <Button Margin="0,0,0,20" VerticalAlignment="Top" Content="New Game" Width="160" Background="Black"></Button>
-            <Grid Background="BlanchedAlmond" Width="380" Height="400" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Margin="10,0">
+            <Button Margin="92,20,88,20" VerticalAlignment="Top" Content="NewGame" Width="200" Background="Black" Click="Button_Click" RenderTransformOrigin="0.5,0.5"/>
+            <Grid Name="mainGrid" Margin="25,0,35,0" Background="#9f8b77" Height="317"
+         ManipulationMode="All"
+         ManipulationDelta="mainGrid_ManipulationDelta" RenderTransformOrigin="0.606,0.542">
                 <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Button Name="btn1" Grid.Row="0" Grid.Column="0" />
-                <Button Name="btn2" Grid.Row="0" Grid.Column="1" />
-                <Button Name="btn3" Grid.Row="0" Grid.Column="2" />
-                <Button Name="btn4" Grid.Row="0" Grid.Column="3" />
-                <Button Name="btn5" Grid.Row="1" Grid.Column="0" />
-                <Button Name="btn6" Grid.Row="1" Grid.Column="1" />
-                <Button Name="btn7" Grid.Row="1" Grid.Column="2" />
-                <Button Name="btn8" Grid.Row="1" Grid.Column="3" />
-                <Button Name="btn9" Grid.Row="2" Grid.Column="0" />
-                <Button Name="btn10" Grid.Row="2" Grid.Column="1" />
-                <Button Name="btn11" Grid.Row="2" Grid.Column="2" />
-                <Button Name="btn12" Grid.Row="2" Grid.Column="3" />
-                <Button Name="btn13" Grid.Row="3" Grid.Column="0" />
-                <Button Name="btn14" Grid.Row="3" Grid.Column="1" />
-                <Button Name="btn15" Grid.Row="3" Grid.Column="2" />
-                <Button Name="btn16" Grid.Row="3" Grid.Column="3" />
-                
+                <Button Grid.Row="0" Grid.Column="0" />
+                <Button Grid.Row="0" Grid.Column="1" />
+                <Button Grid.Row="0" Grid.Column="2" />
+                <Button Grid.Row="0" Grid.Column="3" />
+                <Button Grid.Row="1" Grid.Column="0" />
+                <Button Grid.Row="1" Grid.Column="1" />
+                <Button Grid.Row="1" Grid.Column="2" />
+                <Button Grid.Row="1" Grid.Column="3" />
+                <Button Grid.Row="2" Grid.Column="0" />
+                <Button Grid.Row="2" Grid.Column="1" />
+                <Button Grid.Row="2" Grid.Column="2" />
+                <Button Grid.Row="2" Grid.Column="3" />
+                <Button Grid.Row="3" Grid.Column="0" />
+                <Button Grid.Row="3" Grid.Column="1" />
+                <Button Grid.Row="3" Grid.Column="2" />
+                <Button Grid.Row="3" Grid.Column="3" />
+
             </Grid>
-            <StackPanel Margin="0,20,0,0" VerticalAlignment="Bottom" HorizontalAlignment="Center" Orientation="Horizontal">
-                <TextBlock Text="Score:" FontSize="30"></TextBlock>
-                <TextBlock Name="scoretext" FontSize="40"></TextBlock>
+            <StackPanel Margin="0,100" HorizontalAlignment="Center" Orientation="Horizontal">
+                <TextBlock Text="Score:" FontSize="30" HorizontalAlignment="Center"/>
+                <TextBlock  Foreground="Red" x:Name="textScore" FontSize="30" HorizontalAlignment="Right"
+                           Text="{Binding Score, Converter={StaticResource scoreConverter}}"/>
             </StackPanel>
         </StackPanel>
     </Grid>
